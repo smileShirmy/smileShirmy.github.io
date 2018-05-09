@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>学习webpack-前置知识 | Shirmy</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">学习webpack-前置知识</h1><a id="logo" href="/.">Shirmy</a><p class="description">From small beginnings comes great things.</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">学习webpack-前置知识</h1><div class="post-meta">May 9, 2018<span> | </span><span class="category"><a href="/categories/Webpack/">Webpack</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/05/09/学习webpack-前置知识/" href="/2018/05/09/学习webpack-前置知识/#disqus_thread"></a><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Webpack的诞生"><span class="toc-number">1.0.1.</span> <span class="toc-text">Webpack的诞生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么需要构建？"><span class="toc-number">1.0.2.</span> <span class="toc-text">为什么需要构建？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#前后端分工的变化"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">前后端分工的变化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#框架演变"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">框架演变</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HTML发展历史"><span class="toc-number">1.0.2.3.</span> <span class="toc-text">HTML发展历史</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CSS发展历史"><span class="toc-number">1.0.2.4.</span> <span class="toc-text">CSS发展历史</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#前端脚本语言"><span class="toc-number">1.0.2.5.</span> <span class="toc-text">前端脚本语言</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#环境的变化"><span class="toc-number">1.0.2.6.</span> <span class="toc-text">环境的变化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#社区的变化"><span class="toc-number">1.0.2.7.</span> <span class="toc-text">社区的变化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#工具的变化"><span class="toc-number">1.0.2.8.</span> <span class="toc-text">工具的变化</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么前端需要构建？"><span class="toc-number">1.0.3.</span> <span class="toc-text">为什么前端需要构建？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么是Webpack？"><span class="toc-number">1.0.4.</span> <span class="toc-text">为什么是Webpack？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习准备-模块化"><span class="toc-number">2.</span> <span class="toc-text">学习准备 - 模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JS-模块化"><span class="toc-number">2.0.1.</span> <span class="toc-text">JS 模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#命名空间"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">命名空间</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#COMMONJS"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">COMMONJS</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AMD-CMD-UMD"><span class="toc-number">2.0.1.3.</span> <span class="toc-text">AMD/CMD/UMD</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ES6-module"><span class="toc-number">2.0.1.4.</span> <span class="toc-text">ES6 module</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Webpack支持"><span class="toc-number">2.0.1.5.</span> <span class="toc-text">Webpack支持</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS-模块化"><span class="toc-number">2.0.2.</span> <span class="toc-text">CSS 模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CSS设计模式"><span class="toc-number">2.0.2.1.</span> <span class="toc-text">CSS设计模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CSS-Modules"><span class="toc-number">2.0.2.2.</span> <span class="toc-text">CSS Modules</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境准备"><span class="toc-number">3.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-简介"><span class="toc-number">4.</span> <span class="toc-text">webpack 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Webpack概述"><span class="toc-number">4.0.1.</span> <span class="toc-text">Webpack概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Webpack的版本更迭"><span class="toc-number">4.0.2.</span> <span class="toc-text">Webpack的版本更迭</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Webpack-V1"><span class="toc-number">4.0.2.1.</span> <span class="toc-text">Webpack V1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Webpack-V2"><span class="toc-number">4.0.2.2.</span> <span class="toc-text">Webpack V2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Webpack-V3"><span class="toc-number">4.0.2.3.</span> <span class="toc-text">Webpack V3</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Webpack的功能进化"><span class="toc-number">4.0.3.</span> <span class="toc-text">Webpack的功能进化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-核心概念"><span class="toc-number">5.</span> <span class="toc-text">webpack 核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Entry"><span class="toc-number">5.0.1.</span> <span class="toc-text">Entry</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Output"><span class="toc-number">5.0.2.</span> <span class="toc-text">Output</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Loaders"><span class="toc-number">5.0.3.</span> <span class="toc-text">Loaders</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常用的-Loader"><span class="toc-number">5.0.3.1.</span> <span class="toc-text">常用的 Loader</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Plugins"><span class="toc-number">5.0.4.</span> <span class="toc-text">Plugins</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常用Plugins"><span class="toc-number">5.0.4.1.</span> <span class="toc-text">常用Plugins</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#名词"><span class="toc-number">5.0.5.</span> <span class="toc-text">名词</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录代码"><span class="toc-number">6.</span> <span class="toc-text">附录代码</span></a></li></ol></div></div><div class="post-content"><p>系统学习webpack，基于 webpack@3.10.0</p>
+<a id="more"></a>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h4 id="Webpack的诞生"><a href="#Webpack的诞生" class="headerlink" title="Webpack的诞生"></a>Webpack的诞生</h4><ul>
+<li>Tobias Koppers(github: @sokra)</li>
+<li>GWT(Google Web Toolkit)</li>
+<li>Pull request(没有人接受，所以自己开发一个)</li>
+<li>Webpack</li>
+<li><p>Instagram(发现了webpack，保养了它)</p>
+<blockquote>
+<p>It’s a funny story how I started with Webpack. Before getting addicted to JavaScript, I also developed in Java. I tried GWT (Google Web Toolkit) in that time. GWT is a Java-to-JavaScript Compiler, which has a great feature: code-splitting. I liked this feature and missed it in existing JavaScript tooling. I made a pull request to an existing module bundler, but it did not go through. Webpack was born.</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="为什么需要构建？"><a href="#为什么需要构建？" class="headerlink" title="为什么需要构建？"></a>为什么需要构建？</h4><ul>
+<li>开发分工变化</li>
+<li>框架的变化</li>
+<li>语言的变化</li>
+<li>环境的变化</li>
+<li>社区的变化</li>
+<li>工具的变化</li>
+</ul>
+<h5 id="前后端分工的变化"><a href="#前后端分工的变化" class="headerlink" title="前后端分工的变化"></a>前后端分工的变化</h5><p><strong>早年：</strong></p>
+<p>前端开发只需要产出什么？静态页面，数据动态套用逻辑都由后端工程师完成。前端只负责静态的页面和静态页面的动画效果例如轮播图，点击或是悬停动画，或者是不停向上滚动的文字等等。</p>
+<p><strong>现在：</strong></p>
+<p>前端开发越来越复杂，web 应用对前端的要求越来越高，前端开始除了静态页面的开发之外开始管理页面之间的逻辑，数据的状态，应用变的越来越复杂，前端逻辑开始抽象分层。<br>之前前端工程师只需要新建一个html 文件就可以开始编码，而现在前端需要搭建本地开发环境，接口代理，模块化开发。这些业务复杂度的提升导致前端开发方式的演变，从简单的页面构建到网站整理的架构规划，逻辑分层，模块化，从而需要构建工具的支持，来保证开发效率。</p>
+<h5 id="框架演变"><a href="#框架演变" class="headerlink" title="框架演变"></a>框架演变</h5><p>JS库 -&gt; MVC -&gt; MV*</p>
+<h5 id="HTML发展历史"><a href="#HTML发展历史" class="headerlink" title="HTML发展历史"></a>HTML发展历史</h5><h5 id="CSS发展历史"><a href="#CSS发展历史" class="headerlink" title="CSS发展历史"></a>CSS发展历史</h5><h5 id="前端脚本语言"><a href="#前端脚本语言" class="headerlink" title="前端脚本语言"></a>前端脚本语言</h5><h5 id="环境的变化"><a href="#环境的变化" class="headerlink" title="环境的变化"></a>环境的变化</h5><p>浏览器端、服务端、移动端</p>
+<h5 id="社区的变化"><a href="#社区的变化" class="headerlink" title="社区的变化"></a>社区的变化</h5><p>GitHub、npm</p>
+<h5 id="工具的变化"><a href="#工具的变化" class="headerlink" title="工具的变化"></a>工具的变化</h5><ul>
+<li>APACHE ANT</li>
+<li>GRUNT</li>
+<li>Gulp</li>
+<li>F.I.S</li>
+<li>rollup.js</li>
+<li>webpack</li>
+</ul>
+<h4 id="为什么前端需要构建？"><a href="#为什么前端需要构建？" class="headerlink" title="为什么前端需要构建？"></a>为什么前端需要构建？</h4><ul>
+<li>开发复杂化</li>
+<li>框架去中心化</li>
+<li>语言编译化</li>
+<li>开发模块化</li>
+</ul>
+<h4 id="为什么是Webpack？"><a href="#为什么是Webpack？" class="headerlink" title="为什么是Webpack？"></a>为什么是Webpack？</h4><ul>
+<li>Vue-cli/React-starter/Angular-cli</li>
+<li>Code-splitting</li>
+<li>天生的模块化</li>
+<li>还有很多…</li>
+</ul>
+<h2 id="学习准备-模块化"><a href="#学习准备-模块化" class="headerlink" title="学习准备 - 模块化"></a>学习准备 - 模块化</h2><h4 id="JS-模块化"><a href="#JS-模块化" class="headerlink" title="JS 模块化"></a>JS 模块化</h4><h5 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h5><p>库名.类别名.方法名</p>
+<p>YUI 沙箱机制</p>
+<h5 id="COMMONJS"><a href="#COMMONJS" class="headerlink" title="COMMONJS"></a>COMMONJS</h5><ul>
+<li>Modules/1.1.1</li>
+<li>一个文件为一个模块</li>
+<li>通过module.exports暴露模块接口</li>
+<li>通过require引入模块</li>
+<li>同步执行</li>
+<li><a href="http://wiki.commonjs.org/wiki/Modules" target="_blank" rel="noopener">http://wiki.commonjs.org/wiki/Modules</a></li>
+</ul>
+<h5 id="AMD-CMD-UMD"><a href="#AMD-CMD-UMD" class="headerlink" title="AMD/CMD/UMD"></a>AMD/CMD/UMD</h5><ul>
+<li><strong>AMD Async module Definition</strong></li>
+<li>使用define定义模块</li>
+<li>使用require加载模块</li>
+<li>RequireJS</li>
+<li>依赖前置，提前执行</li>
+<li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD" target="_blank" rel="noopener">https://github.com/amdjs/amdjs-api/wiki/AMD</a></li>
+<li><strong>Common Module Definition</strong></li>
+<li>一个文件为一个模块</li>
+<li>使用define来定义一个模块</li>
+<li>使用require来加载一个模块</li>
+<li>SeaJS</li>
+<li>尽可能懒执行</li>
+<li><a href="https://github.com/cmdjs/specification/blob/master/draft/module.md" target="_blank" rel="noopener">https://github.com/cmdjs/specification/blob/master/draft/module.md</a></li>
+<li><strong>区别</strong></li>
+<li>AMD提前执行了，CMD执行到的时候再执行</li>
+<li><strong>UMD Universal Module Definition</strong></li>
+<li>通用解决方案</li>
+<li>三个步骤</li>
+<li><ol>
+<li>判断是否支持AMD</li>
+</ol>
+</li>
+<li><ol>
+<li>判断是否支持 CommonJS</li>
+</ol>
+</li>
+<li><ol>
+<li>如果都没有，使用全局变量</li>
+</ol>
+</li>
+</ul>
+<h5 id="ES6-module"><a href="#ES6-module" class="headerlink" title="ES6 module"></a>ES6 module</h5><ul>
+<li><strong>ECMAScript Module</strong></li>
+<li>一个文件一个模块</li>
+<li>export/import</li>
+</ul>
+<h5 id="Webpack支持"><a href="#Webpack支持" class="headerlink" title="Webpack支持"></a>Webpack支持</h5><ul>
+<li>AMD(RequireJS)</li>
+<li>ES Modules(推荐的，不再需要babel)</li>
+<li>CommonJS(本身就是基于nodejs的工具)</li>
+</ul>
+<h4 id="CSS-模块化"><a href="#CSS-模块化" class="headerlink" title="CSS 模块化"></a>CSS 模块化</h4><h5 id="CSS设计模式"><a href="#CSS设计模式" class="headerlink" title="CSS设计模式"></a>CSS设计模式</h5><ul>
+<li>OOCSS(面向对象的CSS，设计和结构分离，内容和容器分离)</li>
+<li>SMACSS(可扩展和模块化，Base、Layout、Module、State、Theme)</li>
+<li>Atomic CSS(每个CSS的规则都定义一个class，mt-10、w-100、h-15)</li>
+<li>MCSS(多层级，foundation、base、project、cosmetic)</li>
+<li>AMCSS(针对属性CSS设计)</li>
+<li>BEM(Block、Element、Modifier)，如下代码所示</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* BEM */</span></span><br><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">	<span class="attribute">display</span>: inline-block;</span><br><span class="line">	<span class="attribute">border-radius</span>: <span class="number">3px</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">7px</span> <span class="number">12px</span>;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#D5D5D5</span>;</span><br><span class="line">	<span class="attribute">background-image</span>: <span class="built_in">linear-gradient</span>(#EEE, #DDD);</span><br><span class="line">    <span class="attribute">font</span>: <span class="number">700</span> <span class="number">13px</span>/<span class="number">18px</span> Helvetica, arial;</span><br><span class="line">    </span><br><span class="line">    &amp;--state-success &#123;</span><br><span class="line">        <span class="selector-tag">color</span>: <span class="selector-id">#FFF</span>;</span><br><span class="line">        <span class="selector-tag">background</span>: <span class="selector-id">#569E3D</span> <span class="selector-tag">linear-gradient</span>(<span class="selector-id">#79D858</span>, <span class="selector-id">#569E3D</span>) <span class="selector-tag">repeat-x</span>;</span><br><span class="line">        <span class="selector-tag">border-color</span>: <span class="selector-id">#4A993E</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &amp;<span class="selector-tag">--state-danger</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#900</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="CSS-Modules"><a href="#CSS-Modules" class="headerlink" title="CSS Modules"></a>CSS Modules</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">'./style.css'</span>;</span><br><span class="line"></span><br><span class="line">element.innerHTML = <span class="string">'&lt;div class&gt;="'</span> + styles.className + <span class="string">'"&gt;'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.className</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: green</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.style_className_1FUOu</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Webpack 中使用css modules非常简单是需要通过使用css-loader 开启 module 这个参数就可以了</p>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ul>
+<li>命令行工具</li>
+<li>Node + Npm</li>
+<li>Webpack</li>
+<li>www.iterm2.com</li>
+<li>ohmyz.sh</li>
+</ul>
+<p>安装命令：</p>
+<p><a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions" target="_blank" rel="noopener">https://docs.npmjs.com/getting-started/fixing-npm-permissions</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局安装 webpack</span></span><br><span class="line">sudo npm install webpack -g</span><br></pre></td></tr></table></figure>
+<h2 id="webpack-简介"><a href="#webpack-简介" class="headerlink" title="webpack 简介"></a>webpack 简介</h2><h4 id="Webpack概述"><a href="#Webpack概述" class="headerlink" title="Webpack概述"></a>Webpack概述</h4><p>MODULES WITH DEPENDENCIES =&gt; STATIC ASSETS</p>
+<p>官网：<a href="https://webpack.js.org/" target="_blank" rel="noopener">https://webpack.js.org/</a></p>
+<p>中文官网：<a href="https://doc.webpack-china.org" target="_blank" rel="noopener">https://doc.webpack-china.org</a></p>
+<p>*学好英文：英文资料是第一手，原汁原味，参与社区互动</p>
+<h4 id="Webpack的版本更迭"><a href="#Webpack的版本更迭" class="headerlink" title="Webpack的版本更迭"></a>Webpack的版本更迭</h4><p><a href="https://github.com/webpack/webpack/releases" target="_blank" rel="noopener">https://github.com/webpack/webpack/releases</a></p>
+<p>看 release notes</p>
+<h5 id="Webpack-V1"><a href="#Webpack-V1" class="headerlink" title="Webpack V1"></a>Webpack V1</h5><ul>
+<li>编译、打包</li>
+<li>HMR(模块热更新)</li>
+<li>代码分割</li>
+<li>文件处理</li>
+</ul>
+<h5 id="Webpack-V2"><a href="#Webpack-V2" class="headerlink" title="Webpack V2"></a>Webpack V2</h5><ul>
+<li>Tree Shaking(把没有引入的代码都去除掉，体积更小)</li>
+<li>ES module(不再需要babel)</li>
+<li>动态 Import (动态import()函数)</li>
+<li>新的文档</li>
+</ul>
+<h5 id="Webpack-V3"><a href="#Webpack-V3" class="headerlink" title="Webpack V3"></a>Webpack V3</h5><ul>
+<li>Scope Hoisting (作用域提升，把所有代码的作用域提到单一作用域中，提升代码性能)</li>
+<li><p>Magic Comments (配合动态import使用，指定打包后的文件名)</p>
+</li>
+<li><p>V1 -&gt; V2</p>
+</li>
+<li>迁移指南 <a href="https://webpack.js.org/guides/migrating/" target="_blank" rel="noopener">https://webpack.js.org/guides/migrating/</a></li>
+<li>中文版 <a href="https://doc.webpack-china.org/guides/migrating/" target="_blank" rel="noopener">https://doc.webpack-china.org/guides/migrating/</a></li>
+<li>V2 -&gt; V3</li>
+<li>直接更新 npm update</li>
+<li>Vote: <a href="https://webpack.js.org/vote/" target="_blank" rel="noopener">https://webpack.js.org/vote/</a> 参与投票</li>
+</ul>
+<h4 id="Webpack的功能进化"><a href="#Webpack的功能进化" class="headerlink" title="Webpack的功能进化"></a>Webpack的功能进化</h4><h2 id="webpack-核心概念"><a href="#webpack-核心概念" class="headerlink" title="webpack 核心概念"></a>webpack 核心概念</h2><h4 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h4><p>代码的入口、打包的入口、单个入口或多个入口(并非代表执行的入口)</p>
+<p>依次找寻依赖</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个入口</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'index.js'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多个入口</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: [<span class="string">'index.js'</span>, <span class="string">'vendor.js'</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key value 推荐的写法，index表示一个独特的chunk</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        index: <span class="string">'index.js'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        index: [<span class="string">'index.js'</span>, <span class="string">'app.js'</span>],</span><br><span class="line">        vendor: <span class="string">'vendor.js'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><ul>
+<li>打包生成的文件(bundle)</li>
+<li>一个或多个</li>
+<li>自定义规则</li>
+<li>配合CDN</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'index.js'</span></span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: <span class="string">'index.min.js'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        index: <span class="string">'index.js'</span>,</span><br><span class="line">        vendor: <span class="string">'vendor.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// name 对应 index 和 vendor</span></span><br><span class="line">    <span class="comment">// hash 代表独一无二的版本号</span></span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: <span class="string">'[name].min.[hash:5].js'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Loaders"><a href="#Loaders" class="headerlink" title="Loaders"></a>Loaders</h4><ul>
+<li>处理文件</li>
+<li>转化为模块</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">                use: <span class="string">'css-loader'</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="常用的-Loader"><a href="#常用的-Loader" class="headerlink" title="常用的 Loader"></a>常用的 Loader</h5><ul>
+<li><strong>编译相关</strong></li>
+<li>babel-loader、ts-loader</li>
+<li><strong>样式相关</strong></li>
+<li>style-loader、css-loader、less-loader、postcss-loader</li>
+<li><strong>文件相关</strong></li>
+<li>file-loader、url-loader</li>
+</ul>
+<h4 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h4><ul>
+<li>参与打包整个过程</li>
+<li>打包优化和压缩</li>
+<li>配置编译时的变量</li>
+<li>极其灵活</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin()</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="常用Plugins"><a href="#常用Plugins" class="headerlink" title="常用Plugins"></a>常用Plugins</h5><ul>
+<li><strong>优化相关</strong></li>
+<li>CommonsChunkPlugin *(<a href="https://doc.webpack-china.org/plugins/split-chunks-plugin/" target="_blank" rel="noopener">webpack4 SplitChunksPlugin</a>)</li>
+<li>UglifyjsWebpackPlugin</li>
+<li><strong>功能相关</strong></li>
+<li>ExtractTextWebapckPlugin(打包成单独CSS文件)</li>
+<li>HtmlWebpackPlugin(生成HTML)</li>
+<li>HotModuleReplacementPlugin(热更新)</li>
+<li>CopyWebpackPlugin(把第三方文件移到输出文件)</li>
+</ul>
+<h4 id="名词"><a href="#名词" class="headerlink" title="名词"></a>名词</h4><ul>
+<li><strong>Chunk</strong>：</li>
+<li>代码块，默认把代码分成一个个代码块</li>
+<li>如果用动态懒加载，懒加载的代码认为一个代码块</li>
+<li>相同的代码抽出来作为新的代码块</li>
+<li><strong>Bundle</strong>：</li>
+<li>打包过以后，一捆</li>
+<li><strong>Module</strong>：</li>
+<li>模块，通过loaders转为一个模块</li>
+</ul>
+<h2 id="附录代码"><a href="#附录代码" class="headerlink" title="附录代码"></a>附录代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// css-loader</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123; </span><br><span class="line">                test: <span class="regexp">/\.css$/</span>, </span><br><span class="line">                use: <span class="string">'css-loader'</span> </span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 简单写法</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'index.js'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组写法</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: [<span class="string">'index.js'</span>, <span class="string">'vendor.js'</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推荐写法</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        index: [<span class="string">'index.js'</span>, <span class="string">'app.js'</span>],</span><br><span class="line">        vendor: <span class="string">'vendor.js'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单个文件 单个输出</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'index.js'</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: <span class="string">'index.min.js'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多个文件 多个输出</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        index: <span class="string">'index.js'</span>,</span><br><span class="line">        vendor: <span class="string">'vendor.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: <span class="string">'[name].min.[hash:5].js'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123; </span><br><span class="line">                test: <span class="regexp">/\.css$/</span>, </span><br><span class="line">                use: <span class="string">'css-loader'</span> </span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(),</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><div class="tags"><a href="/tags/Learning/">Learning</a><a href="/tags/Webpack/">Webpack</a></div><div class="post-nav"><a class="next" href="/2018/05/06/2018-05-06/">2018-05-06</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'qiushiming';
+var disqus_identifier = '2018/05/09/学习webpack-前置知识/';
+var disqus_title = '学习webpack-前置知识';
+var disqus_url = 'http://shirmy.me/2018/05/09/学习webpack-前置知识/';
+$('.btn_click_load').click(function() {
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  $('.btn_click_load').css('display','none');
+});
+$.ajax({
+  url: 'https://disqus.com/next/config.json',
+  timeout: 3000,
+  type: 'GET',
+  success: (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    $('.btn_click_load').css('display','none');
+  })(),
+  error: function() {
+    $('.btn_click_load').css('display','block');
+  }
+});</script><script id="dsq-count-scr" src="//qiushiming.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://shirmy.me"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/Node-js/">Node.js</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/Node-js/Translation/">Translation</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Poetry/">Poetry</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Webpack/">Webpack</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/learning/" style="font-size: 15px;">learning</a> <a href="/tags/Life/" style="font-size: 15px;">Life</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/Learning/" style="font-size: 15px;">Learning</a> <a href="/tags/Node-js/" style="font-size: 15px;">Node.js</a> <a href="/tags/Event-Loop/" style="font-size: 15px;">Event Loop</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Trying/" style="font-size: 15px;">Trying</a> <a href="/tags/poetry/" style="font-size: 15px;">poetry</a> <a href="/tags/Webpack/" style="font-size: 15px;">Webpack</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Teaching/" style="font-size: 15px;">Teaching</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/学习webpack-前置知识/">学习webpack-前置知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/06/2018-05-06/">2018-05-06</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/Understanding-nodejs-Event-Loop/">[译]理解node.js事件轮询</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/原来我是真的喜欢你/">原来我是真的喜欢你</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/16/实现三栏布局的六种方式/">实现三栏布局的六种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/10/ES6-Set和Map数据结构/">ES6 Set和Map数据结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/08/ES6 Symbol/">ES6 Symbol</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/04/ES6 变量的解构赋值/">ES6 变量的解构赋值</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/ES6 let和const命令/">ES6 let和const命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/ES6 Class的继承/">ES6 Class的继承</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> Recent Comments</i></div><script type="text/javascript" src="//qiushiming.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Shirmy.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
