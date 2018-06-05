@@ -22,7 +22,7 @@
 <p>所有数据以二进制传输</p>
 <p>同一个连接里面发送多个请求不再需要按照顺序来(并行而非串行)</p>
 <p>头信息压缩以及推送(服务端主动发生数据传输)等提高效率的功能</p>
-<h2 id="HTTP-三次握手"><a href="#HTTP-三次握手" class="headerlink" title="HTTP 三次握手"></a>HTTP 三次握手</h2><p><img src="/2018/06/05/HTTP协议简介/HTTP-introduction/HTTP-three-hands.png" alt="HTTP-three-hands.png"></p>
+<h2 id="HTTP-三次握手"><a href="#HTTP-三次握手" class="headerlink" title="HTTP 三次握手"></a>HTTP 三次握手</h2><p><img src="/2018/06/05/HTTP协议简介/HTTP-three-hands.png" alt="HTTP三次握手"></p>
 <p>客户端和服务端进行传输需要创建TCP连接，HTTP请求是基于TCP连接来进行发送的</p>
 <p>在HTTP1.0里，TCP连接是在一个HTTP创建的时候就创建的，服务器响应之后就关闭TCP连接</p>
 <p>在HTTP1.1可以声明TCP长连接保持(避免三次握手的消耗)</p>
@@ -32,7 +32,7 @@
 <li>server: SYN=1, ACK=X+1, Seq=Y</li>
 <li>clinet: ACK=Y+1, Seq=Z</li>
 </ul>
-<h2 id="URI、URL、URN"><a href="#URI、URL、URN" class="headerlink" title="URI、URL、URN"></a>URI、URL、URN</h2><p><img src="/2018/06/05/HTTP协议简介/HTTP-introduction/URL.png" alt="URL.png"></p>
+<h2 id="URI、URL、URN"><a href="#URI、URL、URN" class="headerlink" title="URI、URL、URN"></a>URI、URL、URN</h2><p><img src="/2018/06/05/HTTP协议简介/URL.png" alt="浏览器输入URL后HTTP请求返回的完整过程"></p>
 <h3 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h3><p>Uniform Resource Identifier/统一资源标识符</p>
 <p>用来唯一标识互联网的信息资源</p>
 <p>包含URL和URN</p>
@@ -45,7 +45,7 @@
 <h3 id="URN"><a href="#URN" class="headerlink" title="URN"></a>URN</h3><p>永久统一资源定位符</p>
 <p>在资源移动之后还能被找到</p>
 <p>目前还没有非常成熟的使用方案</p>
-<h2 id="HTTP报文格式"><a href="#HTTP报文格式" class="headerlink" title="HTTP报文格式"></a>HTTP报文格式</h2><p><img src="/2018/06/05/HTTP协议简介/HTTP-introduction/HTTP-request.png" alt="HTTP-request.png"></p>
+<h2 id="HTTP报文格式"><a href="#HTTP报文格式" class="headerlink" title="HTTP报文格式"></a>HTTP报文格式</h2><p><img src="/2018/06/05/HTTP协议简介/HTTP-request.png" alt="HTTP请求报文"></p>
 <p>用来定义对于资源的操作</p>
 <p>GET POST PUT DELETE(获取、创建、修改、删除)</p>
 <p>HTTP 方法：</p>
